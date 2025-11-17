@@ -1,46 +1,134 @@
-﻿/* General Body */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Header */
+﻿/* Header */
 header {
+    background-image: url('../images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
     text-align: center;
-    padding: 50px 20px;
-    background-color: #1f1f1f;
+    padding: 100px 20px;
 }
 
-/* Sections */
-section {
-    padding: 50px 20px;
-}
-
-/* Section titles */
-h2 {
-    color: #00ffff;
-}
-
-/* Projects */
-.project-card {
-    background-color: #222;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-
-    .project-card img {
+    /* Optional blur overlay */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 500px;
-        border-radius: 8px;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        backdrop-filter: blur(5px);
+        z-index: 0;
     }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #1f1f1f;
+    header h1,
+    header p {
+        position: relative;
+        z-index: 1;
+    }
+
+/* Theme toggle */
+#theme-toggle {
+    z-index: 9999;
 }
+
+/* About section */
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Skills cards */
+#skills .card {
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Light theme overrides */
+body.light-theme {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
+    body.light-theme #skills .card {
+        background-color: #fff;
+        color: #212529;
+    }
+
+/* Project Images */
+.project-img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+    .project-img:hover {
+        transform: scale(1.05);
+    }
+
+/* Fullscreen Image Viewer */
+.image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+#closeViewer {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    font-size: 50px;
+    color: black;
+    cursor: pointer;
+    z-index: 6000;
+}
+
+#fullImage {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 10px;
+    z-index: 5001;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 6000;
+    border-radius: 5px;
+}
+
+#prevImage {
+    left: 50px;
+}
+
+#nextImage {
+    right: 50px;
+}
+
+.nav-btn:hover {
+    background-color: rgba(0,0,0,0.9);
+}
+
